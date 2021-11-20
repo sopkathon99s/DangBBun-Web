@@ -6,12 +6,20 @@ import { OverviewPage } from "../pages/Overview";
 import { ClosedPage } from "../pages/Overview/Closed";
 import { SubmittedPage } from "../pages/Overview/Submitted";
 import { Page404 } from "../pages/Page404";
+import { NeedAuth } from "../utils/login";
 
 export function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route
+          path="/"
+          element={
+            <NeedAuth>
+              <HomePage />
+            </NeedAuth>
+          }
+        />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/overview" element={<OverviewPage />}>
           <Route path="submitted" element={<SubmittedPage />} />

@@ -30,7 +30,7 @@ module.exports = {
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
     "react/display-name": "off",
-    "no-unused-vars": "warn",
+    "no-unused-vars": "off",
     "func-style": ["error", "declaration"],
     "@typescript-eslint/no-unused-vars": ["error"],
     "@typescript-eslint/explicit-module-boundary-types": "off",
