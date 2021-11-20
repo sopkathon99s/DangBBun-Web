@@ -7,7 +7,7 @@ export function NeedAuth(props: { children: ReactElement }): ReactElement {
   const token = useAuthToken();
 
   if (token === "") {
-    return <></>;
+    return <div>Loading</div>;
   }
 
   return props.children;
