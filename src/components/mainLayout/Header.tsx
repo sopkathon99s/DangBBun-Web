@@ -14,8 +14,8 @@ export function Header() {
         <Item selected={pathname === "/"}>
           <Link to="/">뻔개 목록 보기</Link>
         </Item>
-        <Item selected={pathname === "/overview"}>
-          <Link to="/overview">나의 뻔개 목록</Link>
+        <Item selected={pathname.includes("/overview")}>
+          <Link to="/overview/submitted">나의 뻔개 목록</Link>
         </Item>
       </ul>
     </TopBar>
