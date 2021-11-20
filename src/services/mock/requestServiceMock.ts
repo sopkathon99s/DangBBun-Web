@@ -8,8 +8,8 @@ export class RequestServiceMock implements RequestService {
     this.token = token;
     return;
   }
-  async call(): Promise<unknown> {
-    return;
+  async call<T, K>(method: string, path: string, data?: T): Promise<K> {
+    return data as unknown as K;
   }
   async getAccessToken(): Promise<string> {
     return this.token;

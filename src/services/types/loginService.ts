@@ -9,5 +9,4 @@ export interface LoginResult {
 
 export interface LoginService {
   login(info: LoginInfo): Promise<LoginResult>;
-  logout(): Promise<void>;
 }

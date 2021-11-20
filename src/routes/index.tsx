@@ -3,6 +3,7 @@ import { Header } from "../components/mainLayout/Header";
 import { CreatePage } from "../pages/Create";
 import { HomePage } from "../pages/Home";
 import { LoginPage } from "../pages/Login";
+import { LogoutPage } from "../pages/Logout";
 import { OverviewPage } from "../pages/Overview";
 import { ClosedPage } from "../pages/Overview/Closed";
 import { SubmittedPage } from "../pages/Overview/Submitted";
@@ -23,6 +24,7 @@ export function AppRoutes() {
           }
         />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/logout" element={<LogoutPage />} />
         <Route path="/overview" element={<OverviewPage />}>
           <Route path="submitted" element={<SubmittedPage />} />
           <Route path="closed" element={<ClosedPage />} />
