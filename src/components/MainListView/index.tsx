@@ -1,15 +1,34 @@
+import { Children, ReactNode } from "react";
 import styled from "styled-components";
 
-export function MainListView() {
-  return (
-    <StyledMainListView>
-      <VerticalLine />
-    </StyledMainListView>
-  );
+interface MainListViewProps {
+  cards: ReactNode;
 }
 
-const StyledMainListView = styled.div`
-  height: 15rem;
+export function MainListView(props: MainListViewProps) {
+  const { cards } = props;
+
+  const newCards = Children.map(cards, (child) => {
+    return (
+      <Splitted>
+        <VerticalLine />
+        {child}
+      </Splitted>
+    );
+  });
+
+  return <StyledMainListView>{newCards}</StyledMainListView>;
+}
+
+const StyledMainListView = styled.div``;
+
+const Splitted = styled.div`
+  display: flex;
+  align-items: stretch;
+  & > *:last-child {
+    flex-grow: 1;
+    margin-bottom: 4.6rem;
+  }
 `;
 
 function VerticalLine() {
@@ -22,7 +41,6 @@ function VerticalLine() {
 }
 
 const StyledVerticalLine = styled.div`
-  height: 100%;
   width: 3rem;
 
   display: flex;
