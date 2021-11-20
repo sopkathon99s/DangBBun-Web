@@ -1,4 +1,5 @@
 interface BungaeCardProps {
+  restTime: number;
   bungaeState: string;
   title: string;
   currentCnt: number;
@@ -10,25 +11,33 @@ interface BungaeCardProps {
 }
 
 export function BungaeCard(props: BungaeCardProps) {
-  const { bungaeState, title, currentCnt, minCnt, maxCnt, date, location, detail } = props;
+  const { restTime, bungaeState, title, currentCnt, minCnt, maxCnt, date, location, detail } = props;
 
   return (
     <article>
+      <div>{restTime}시간 전</div>
       <div>{bungaeState}</div>
-      {/* card */}
+      <header>{title}</header>
       <div>
-        {/* left */}
-        <header>{title}</header>
+        <h3>
+          <span>언제</span> 만나요?
+        </h3>
+        <h4>{date.getDate()}</h4>
       </div>
       <div>
-        {/* right */}
-        {/* 사람들 동그라미 */}
-        {currentCnt}명/{minCnt}~{maxCnt}명<p>아직도 망설여?</p>
+        <h3>
+          <span>어디서</span> 만나요?
+        </h3>
+        <h4>{location}</h4>
       </div>
-      <h3>언제 만나요?</h3>
-      <h4>{date}</h4>
-      <h3>언제 만나요?</h3>
-      <h4>{location}</h4>
+      <div>
+        <span>현재 {currentCnt}명</span>
+        <span>
+          {minCnt}~{maxCnt}명 정원
+        </span>
+      </div>
+      <div>{/* 동그라미 */}</div>
+
       <p>
         {/* 토글되는 내용 */}
         {detail}
@@ -37,7 +46,7 @@ export function BungaeCard(props: BungaeCardProps) {
         나도 데려가~
         {/* 안 갈래요 토글 */}
       </button>
-      <button>상세</button>
+      <button>{/* toggle */}</button>
     </article>
   );
 }
