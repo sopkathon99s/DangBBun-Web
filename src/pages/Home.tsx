@@ -10,7 +10,7 @@ export function HomePage() {
         <LeftSection></LeftSection>
         <RightSection></RightSection>
       </SectionWrapper>
-      <GoWrite to="/write">
+      <GoWrite to="/create">
         <img width="" height="" src={write} />
       </GoWrite>
     </>
