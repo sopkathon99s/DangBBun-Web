@@ -9,7 +9,10 @@ export function TestTekiter() {
         cards={[...new Array(10)].map((_, idx) => (
           <NormalBungaeCard
             key={idx}
-            status="asdf"
+            status={{
+              mode: "timeLeft",
+              message: "hah",
+            }}
             hurryMessage="아직도 망설여?"
             title="title"
             minMember={2}

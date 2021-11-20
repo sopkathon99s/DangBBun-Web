@@ -4,8 +4,9 @@ import { theme } from "../../styles/theme";
 
 import { ReactComponent as DownArrow } from "../../assets/downArrow.svg";
 
+type BungaeStatus = { mode: "timeLeft"; message: string } | { mode: "failed" } | { mode: "success" };
 interface NormalBungaeCardProps {
-  status: string;
+  status: BungaeStatus;
   hurryMessage: string;
   title: string;
   minMember: number;
@@ -16,6 +17,7 @@ interface NormalBungaeCardProps {
   description: string;
 
   applied: boolean;
+  failed?: boolean;
 }
 
 export function NormalBungaeCard(props: NormalBungaeCardProps) {
@@ -32,9 +34,19 @@ export function NormalBungaeCard(props: NormalBungaeCardProps) {
     }
   }
 
+  function switchStatus() {
+    if (status.mode === "timeLeft") {
+      return <Status>{status.message}</Status>;
+    } else if (status.mode === "success") {
+      return <SuccessStatus>뻔개 성사!</SuccessStatus>;
+    } else if (status.mode === "failed") {
+      return <FailStatus>뻔개 실패</FailStatus>;
+    }
+  }
+
   return (
     <StyledBungaeCard>
-      <PeopleLeft>{status}</PeopleLeft>
+      {switchStatus()}
 
       <BungaeCardInner>
         {applied ? <EndedBanner>신청완료</EndedBanner> : <Hurry>{hurryMessage}</Hurry>}
@@ -77,7 +89,7 @@ const StyledBungaeCard = styled.article`
   border-radius: 12px 0 12px 12px;
 `;
 
-const PeopleLeft = styled.div`
+const Status = styled.div`
   position: absolute;
   display: flex;
   align-items: center;
@@ -95,6 +107,14 @@ const PeopleLeft = styled.div`
   color: white;
 
   font-weight: bold;
+`;
+
+const FailStatus = styled(Status)`
+  background-color: #4a4a4a;
+`;
+
+const SuccessStatus = styled(Status)`
+  background-color: #0057ff;
 `;
 
 const BungaeCardInner = styled.div`

@@ -2,32 +2,41 @@ import write from "../assets/write.png";
 import styled from "styled-components";
 import { theme } from "../styles/theme";
 import { Link } from "react-router-dom";
+import { MainListView } from "../components/MainListView";
+import { useEffect, useState } from "react";
+import { NormalBungaeCard } from "../components/BungaeCard";
+import { api } from "../services";
+import { Bungae } from "../services/types/bungaeService";
 
 export function HomePage() {
+  const [bungaeList, setBungaeList] = useState<Bungae[]>([]);
+
+  useEffect(() => {
+    (async () => {
+      const list = await api.bungae.getBungaeList();
+      setBungaeList(list);
+    })();
+  }, []);
+
   return (
-    <>
-      <SectionWrapper>
-        <LeftSection></LeftSection>
-        <RightSection></RightSection>
-      </SectionWrapper>
+    <StyledHome>
+      <MainListView
+        cards={bungaeList.map((bungae) => (
+          <NormalBungaeCard {...bungae} key={bungae.id} />
+        ))}
+      />
       <GoWrite to="/create">
         <img width="" height="" src={write} />
       </GoWrite>
-    </>
+    </StyledHome>
   );
 }
 
-const SectionWrapper = styled.main`
-  display: flex;
-  width: 100%;
-  height: 100vh;
+const StyledHome = styled.div`
+  margin-top: 4rem;
+  padding-left: 1rem;
+  padding-right: 2.2rem;
 `;
-
-const LeftSection = styled.section`
-  width: 1.8rem;
-  border-right: 1px solid ${theme.color.red};
-`;
-const RightSection = styled.section``;
 
 const GoWrite = styled(Link)`
   display: flex;
