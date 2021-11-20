@@ -5,7 +5,6 @@ import { theme } from "../../styles/theme";
 
 export function Header() {
   const { pathname } = useLocation();
-  console.log(pathname);
   return (
     <TopBar>
       <ImgWrapper>
@@ -35,7 +34,7 @@ const ImgWrapper = styled.div`
   margin-left: 1.5rem;
 `;
 
-const Item = styled.li`
+const Item = styled.li<{ selected: boolean }>`
   display: inline-block;
   margin-right: 1.3rem;
   color: ${theme.color.red};
