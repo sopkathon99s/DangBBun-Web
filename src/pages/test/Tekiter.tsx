@@ -5,15 +5,17 @@ export function TestTekiter() {
   return (
     <Outer>
       <BungaeCard
-        restTime={15}
+        status="asdf"
+        hurryMessage="아직도 망설여?"
         bungaeState="OPEN"
         title="title"
-        currentCnt={123}
-        minCnt={2}
-        maxCnt={6}
-        date={new Date()}
+        minMember={2}
+        maxMember={6}
+        currentMember={5}
+        meetDate="asdf"
         location="loca"
-        detail="detal"
+        description="detal"
+        applied={false}
       />
     </Outer>
   );
@@ -22,4 +24,6 @@ export function TestTekiter() {
 const Outer = styled.div`
   width: 30rem;
   height: 23rem;
+
+  padding-top: 4rem;
 `;
