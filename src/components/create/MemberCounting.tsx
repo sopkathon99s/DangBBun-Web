@@ -26,7 +26,6 @@ export default function MemberCounting({ handleMemberCount, valueName }) {
       <MinusButton
         onClick={() => {
           setMemberCount((memberCount) => onClickButton(memberCount, false));
-          // handleMemberCount(memberCount, valueName);
         }}>
         -
       </MinusButton>
@@ -34,7 +33,6 @@ export default function MemberCounting({ handleMemberCount, valueName }) {
       <PlusButton
         onClick={() => {
           setMemberCount((memberCount) => memberCount + 1);
-          // handleMemberCount(memberCount, valueName);
         }}>
         +
       </PlusButton>

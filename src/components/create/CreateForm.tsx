@@ -18,10 +18,6 @@ export default function CreateForm() {
       .padStart(2, "0")}-${current.getDate().toString().padStart(2, "0")}`,
     time: `${current.getHours().toString().padStart(2, "0")}:${current.getMinutes().toString().padStart(2, "0")}`,
   });
-  // const [date, setDate] = useState("");
-  // function DATE_TEMPLATE(date) {
-  //   `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
-  // }
 
   function handleCreateInput(e, valueName) {
     setBungeaInfo((bungeaInfo) => ({ ...bungeaInfo, [valueName]: e.target.value }));
@@ -83,7 +79,9 @@ export default function CreateForm() {
       </StyledFormIsAnonymousCell>
       <StyledInputTitle type="text" placeholder="제목을 입력하세요" onChange={handleTitle} />
       <StyledTextareaContents placeholder="내용을 입력하세요" onChange={handleContents} />
-      <button onClick={() => console.log(bungeaInfo)}>뻔개 등록하기</button>
+      <StyledPostButtonWrapper>
+        <StyledPostButton onClick={() => console.log(bungeaInfo)}>뻔개 등록하기</StyledPostButton>
+      </StyledPostButtonWrapper>
     </StyledCreateForm>
   );
 }
@@ -154,4 +152,21 @@ const StyledTextareaContents = styled.textarea`
   &:focus {
     outline: none;
   }
+`;
+
+const StyledPostButtonWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
+
+const StyledPostButton = styled.button`
+  background: #fe3838;
+  border-radius: 40px;
+  color: white;
+  font-weight: bold;
+  font-size: 13px;
+  width: 138px;
+  height: 28px;
+  border: none;
+  padding-bottom: 2px;
 `;

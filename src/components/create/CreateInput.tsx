@@ -9,9 +9,6 @@ interface CreateInputProps {
 
 export default function CreateInput(props: CreateInputProps) {
   const { valueName, handleCreateInput, type, placeholder = "" } = props;
-  // function DATE_TEMPLATE(date) {
-  //   `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
-  // }
   return <StyledCreateInput type={type} onChange={(e) => handleCreateInput(e, valueName)} placeholder={placeholder} />;
 }
 
