@@ -5,6 +5,7 @@ import CreateInput from "./CreateInput";
 import FormMemberCell from "./FormMemberCell";
 import MemberCounting from "./MemberCounting";
 import DeadlineSelector from "./DeadlineSelector";
+import { theme } from "../../styles/theme";
 // import { useRef } from "react";
 
 export default function CreateForm() {
@@ -83,10 +84,30 @@ export default function CreateForm() {
       </StyledFormIsAnonymousCell>
       <StyledInputTitle type="text" placeholder="제목을 입력하세요" onChange={handleTitle} />
       <StyledTextareaContents placeholder="내용을 입력하세요" onChange={handleContents} />
-      <button onClick={() => console.log(bungeaInfo)}>뻔개 등록하기</button>
+      <SubmitButton onClick={() => console.log(bungeaInfo)}>뻔개 등록하기</SubmitButton>
     </StyledCreateForm>
   );
 }
+
+const SubmitButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 4rem;
+
+  font-size: 1.3rem;
+  font-weight: bold;
+
+  outline: none;
+  border: none;
+
+  width: 13.8rem;
+  height: 2.8rem;
+
+  color: white;
+  background-color: ${theme.color.red};
+`;
 
 const StyledCreateForm = styled.div`
   width: 100%;
