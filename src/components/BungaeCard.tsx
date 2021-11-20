@@ -1,3 +1,6 @@
+import styled from "styled-components";
+import { theme } from "../styles/theme";
+
 interface BungaeCardProps {
   restTime: number;
   bungaeState: string;
@@ -11,17 +14,16 @@ interface BungaeCardProps {
 }
 
 export function BungaeCard(props: BungaeCardProps) {
-  const { restTime, bungaeState, title, currentCnt, minCnt, maxCnt, date, location, detail } = props;
+  const { bungaeState, title, currentCnt, minCnt, maxCnt, date, location, detail } = props;
 
   return (
-    <article>
-      <div>{restTime}시간 전</div>
+    <StyledBungaeCard>
       <div>{bungaeState}</div>
-      <header>{title}</header>
+      <Title>{title}</Title>
       <div>
-        <h3>
+        <WhenWhereLabel>
           <span>언제</span> 만나요?
-        </h3>
+        </WhenWhereLabel>
         <h4>{date.getDate()}</h4>
       </div>
       <div>
@@ -47,6 +49,25 @@ export function BungaeCard(props: BungaeCardProps) {
         {/* 안 갈래요 토글 */}
       </button>
       <button>{/* toggle */}</button>
-    </article>
+    </StyledBungaeCard>
   );
 }
+
+const StyledBungaeCard = styled.article`
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.29);
+  border-radius: 12px;
+`;
+
+const Title = styled.header`
+  font-size: 1.9rem;
+  font-weight: bold;
+`;
+
+const WhenWhereLabel = styled.div`
+  font-size: 1rem;
+
+  & > span {
+    font-weight: bold;
+    color: ${theme.color.red};
+  }
+`;
