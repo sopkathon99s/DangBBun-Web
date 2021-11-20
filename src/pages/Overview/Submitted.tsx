@@ -10,7 +10,7 @@ export function SubmittedPage() {
 
   useEffect(() => {
     (async () => {
-      const list = await api.bungae.getBungaeList();
+      const list = await api.bungae.getBungaeClosedList();
       setBungaeList(list);
     })();
   }, []);
@@ -35,4 +35,11 @@ export function SubmittedPage() {
   );
 }
 
-const StyledSubmittedPage = styled.div``;
+const StyledSubmittedPage = styled.div`
+  margin-top: 5rem;
+  margin-left: 2.4rem;
+  margin-right: 2.4rem;
+  & > * {
+    margin-bottom: 4.6rem;
+  }
+`;

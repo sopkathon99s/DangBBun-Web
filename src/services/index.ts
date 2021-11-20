@@ -5,6 +5,7 @@ import { UserService } from "./types/userService";
 import { RequestServiceReal } from "./real/requestServiceReal";
 import { LoginServiceReal } from "./real/loginServiceReal";
 import { BungaeService } from "./types/bungaeService";
+// import { BungaeServiceReal } from "./real/bungaeServiceReal";
 import { BungaeServiceMock } from "./mock/bungaeServiceMock";
 
 interface Services {
@@ -30,6 +31,7 @@ function realServiceFactory(): Services {
   const request = new RequestServiceReal();
   const login = new LoginServiceReal(request);
   const user = new UserServiceMock(request);
+  // const bungae = new BungaeServiceReal(request);
   const bungae = new BungaeServiceMock();
 
   return {

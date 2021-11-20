@@ -10,10 +10,10 @@ export function OverviewPage() {
     <div>
       <Items>
         <Item selected={pathname === "/overview/submitted"}>
-          <StyledLink to="submitted">뻔개 목록 보기</StyledLink>
+          <StyledLink to="submitted">내가 연 뻔개</StyledLink>
         </Item>
         <Item selected={pathname === "/overview/closed"}>
-          <StyledLink to="closed">나의 뻔개 목록</StyledLink>
+          <StyledLink to="closed">내가 신청한 뻔개</StyledLink>
         </Item>
       </Items>
       <Outlet />

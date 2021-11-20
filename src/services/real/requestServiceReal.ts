@@ -13,7 +13,7 @@ export class RequestServiceReal implements RequestService {
 
   async setAccessToken(token: string): Promise<void> {
     this.accessToken = token;
-    this.api.defaults.headers["Authorization"] = `Bearer ${token}`;
+    this.api.defaults.headers["Authorization"] = `${token}`;
   }
   async getAccessToken(): Promise<string> {
     return this.accessToken;
