@@ -11,6 +11,10 @@ export default function FormCell({ label, children }) {
 
 const StyledFormCell = styled.div``;
 
-const StyledLabel = styled.span``;
+const StyledLabel = styled.span`
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 8px;
+`;
 
 const StyledChildrenWrapper = styled.div``;

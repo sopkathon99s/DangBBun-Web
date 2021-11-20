@@ -16,7 +16,7 @@ export default function MemberCounting({ handleMemberCount, valueName }) {
     }
   }
   return (
-    <StyledMemberInput>
+    <StyledMemberCounting>
       <StyledButton
         onClick={() => {
           setMemberCount((memberCount) => onClickButton(memberCount, false));
@@ -32,12 +32,24 @@ export default function MemberCounting({ handleMemberCount, valueName }) {
         }}>
         +
       </StyledButton>
-    </StyledMemberInput>
+    </StyledMemberCounting>
   );
 }
 
-const StyledMemberInput = styled.div``;
+const StyledMemberCounting = styled.div`
+  display: flex;
+  align-items: center;
+  & > * {
+    margin-left: 28px;
+  }
+`;
 
-const StyledButton = styled.button``;
+const StyledButton = styled.button`
+  width: 21px;
+  height: 21px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(254, 56, 56, 0.11);
+`;
 
 const StyledMemberCount = styled.div``;

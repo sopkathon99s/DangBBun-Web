@@ -18,13 +18,18 @@ export default function CreateForm() {
   return (
     <StyledCreateForm>
       <FormCell label="모임 장소">
-        <CreateInput type="text" handleCreateInput={handleCreateInput} valueName="place" placeholder="텍스트" />
+        <CreateInput
+          type="text"
+          handleCreateInput={handleCreateInput}
+          valueName="place"
+          placeholder="모임 장소를 입력하세요"
+        />
       </FormCell>
       <FormCell label="모임 날짜">
-        <CreateInput type="date" handleCreateInput={handleCreateInput} valueName="date" placeholder="텍스트" />
+        <CreateInput type="date" handleCreateInput={handleCreateInput} valueName="date" />
       </FormCell>
       <FormCell label="모임 시간">
-        <CreateInput type="time" handleCreateInput={handleCreateInput} valueName="time" placeholder="텍스트" />
+        <CreateInput type="time" handleCreateInput={handleCreateInput} valueName="time" />
       </FormCell>
       <FormMemberCell label="최소 인원">
         <MemberCounting handleMemberCount={handleMemberCount} valueName="minMember" />
@@ -45,4 +50,28 @@ export default function CreateForm() {
   );
 }
 
-const StyledCreateForm = styled.div``;
+const StyledCreateForm = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  & > *:nth-child(1),
+  & > *:nth-child(2) {
+    margin-bottom: 18px;
+  }
+  & > *:nth-child(3) {
+    margin-bottom: 22px;
+  }
+  & > *:nth-child(4) {
+    margin-bottom: 16px;
+  }
+  & > *:nth-child(5) {
+    margin-bottom: 17px;
+  }
+  & > *:nth-child(6),
+  & > *:nth-child(8) {
+    margin-bottom: 15px;
+  }
+  & > *:nth-child(7) {
+    margin-bottom: 13px;
+  }
+`;
