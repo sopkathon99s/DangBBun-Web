@@ -1,6 +1,9 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
+import { theme } from "../../styles/theme";
+import { ReactComponent as MinusButton } from "../../assets/svg/minusButton.svg";
+import { ReactComponent as PlusButton } from "../../assets/svg/plusButton.svg";
 
 export default function MemberCounting({ handleMemberCount, valueName }) {
   const [memberCount, setMemberCount] = useState(0);
@@ -15,23 +18,26 @@ export default function MemberCounting({ handleMemberCount, valueName }) {
       }
     }
   }
+  useEffect(() => {
+    handleMemberCount(memberCount, valueName);
+  }, [memberCount]);
   return (
     <StyledMemberCounting>
-      <StyledButton
+      <MinusButton
         onClick={() => {
           setMemberCount((memberCount) => onClickButton(memberCount, false));
-          handleMemberCount(memberCount, valueName);
+          // handleMemberCount(memberCount, valueName);
         }}>
         -
-      </StyledButton>
+      </MinusButton>
       <StyledMemberCount>{memberCount}명</StyledMemberCount>
-      <StyledButton
+      <PlusButton
         onClick={() => {
-          setMemberCount((memberCount) => onClickButton(memberCount, true));
-          handleMemberCount(memberCount, valueName);
+          setMemberCount((memberCount) => memberCount + 1);
+          // handleMemberCount(memberCount, valueName);
         }}>
         +
-      </StyledButton>
+      </PlusButton>
     </StyledMemberCounting>
   );
 }
@@ -44,12 +50,8 @@ const StyledMemberCounting = styled.div`
   }
 `;
 
-const StyledButton = styled.button`
-  width: 21px;
-  height: 21px;
-  border: none;
-  border-radius: 50%;
-  background: rgba(254, 56, 56, 0.11);
+const StyledMemberCount = styled.div`
+  color: ${theme.color.red};
+  font-weight: bold;
+  font-size: 14px;
 `;
-
-const StyledMemberCount = styled.div``;

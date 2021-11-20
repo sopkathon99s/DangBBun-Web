@@ -23,4 +23,5 @@ const StyledCreateInput = styled.input`
   border: none;
   padding: 8px;
   font-family: inherit;
+  font-size: 11px;
 `;

@@ -9,7 +9,10 @@ export default function FormCell({ label, children }) {
   );
 }
 
-const StyledFormCell = styled.div``;
+const StyledFormCell = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 const StyledLabel = styled.span`
   font-weight: 500;

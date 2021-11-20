@@ -15,6 +15,10 @@ const StyledFormCell = styled.div`
   justify-content: space-between;
 `;
 
-const StyledLabel = styled.span``;
+const StyledLabel = styled.span`
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 8px;
+`;
 
 const StyledChildrenWrapper = styled.div``;
