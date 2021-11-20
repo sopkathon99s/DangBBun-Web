@@ -1,13 +1,14 @@
 import styled from "styled-components";
-import { BungaeCard } from "../../components/BungaeCard";
+import { NormalBungaeCard } from "../../components/BungaeCard";
+import { MainListView } from "../../components/MainListView";
 
 export function TestTekiter() {
   return (
     <Outer>
-      <BungaeCard
+      <MainListView />
+      <NormalBungaeCard
         status="asdf"
         hurryMessage="아직도 망설여?"
-        bungaeState="OPEN"
         title="title"
         minMember={2}
         maxMember={6}
