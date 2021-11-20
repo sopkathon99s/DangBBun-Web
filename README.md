@@ -1,70 +1,141 @@
-# Getting Started with Create React App
+# 서비스 이름 & 서비스 소개
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<br />
+<br />
 
-## Available Scripts
+# 개발 담당 부분
 
-In the project directory, you can run:
+<table>
+    <tr align="center">
+        <td style="min-width: 150px;">
+            <a href="https://github.com/jynam17">
+              <img src="https://github.com/jynam17.png" width="100">
+              <br />
+              <b>남주영</b>
+            </a>
+        </td>
+        <td style="min-width: 150px;">
+            <a href="https://github.com/Tekiter">
+              <img src="https://github.com/Tekiter.png" width="100">
+              <br />
+              <b>박건영</b>
+            </a> 
+        </td>
+        <td style="min-width: 150px;">
+            <a href="https://github.com/joohaem">
+              <img src="https://github.com/joohaem.png" width="100">
+              <br />
+              <b>이주함</b>
+            </a> 
+        </td>
+    </tr>
+    <tr align="center">
+        <td>
+            쭈일<br/>
+            폼 데이터 전송
+        </td>
+        <td>
+            커삐<br />
+            초기세팅 및 로그인
+        </td>
+        <td>
+            쭈삼<br />
+            카드 컴포넌트
+        </td>
+    </tr>
+</table>
 
-### `yarn start`
+<br />
+<br />
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# 코드 컨벤션
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Commit Convention
 
-### `yarn test`
+종류: 내용 포맷으로 메시지 작성
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- feat: 새로운 기능 추가
+- fix: 버그 수정
+- refactor: 리팩터링
+- docs: 설명 문서 변경
+- perf: 성능 개선
+- test: 테스트코드 추가
+- chore: 프로젝트 설정 등 변경
 
-### `yarn build`
+<br />
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 네이밍 컨벤션
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- 폴더와 파일은 카멜 케이스를 사용한다.
+- 예외적으로 리액트 컴포넌트를 정의한 파일과 폴더는 파스칼 케이스를 사용한다.
+- 변수와 함수 이름은 카멜 케이스를 사용한다.
+- 클래스와 인터페이스는 카멜 케이스를 사용한다.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<br />
 
-### `yarn eject`
+### 함수 구문
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+특별한 이유가 없는 한 함수 선언식을 사용한다.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```javascript
+function Component() {
+  function handleClick() {
+    // etc...
+  }
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+  return <button onClick={handleClick}></button>;
+}
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+바로 대입해야 하는 람다 함수는 () => {} 구문을 사용한다.
 
-## Learn More
+```javascript
+function Component() {
+  const [value, setValue] = useState("");
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+  return <input type="text" value={value} onChange={(e) => setValue(e.target.value)} />;
+}
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### 컴포넌트 프롭 ?
 
-### Code Splitting
+- 프롭들은 단일 props 변수로 받는다.
+- 프롭들 각각을 사용할 땐 구조분해 할당을 사용한다.
+- 받을 프롭이 없을 땐 변수를 받지 않는다.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```javascript
+function Component(props) {
+  const { to, from, value, onClick } = props;
 
-### Analyzing the Bundle Size
+  /// etc...
+}
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+function ComponentWithNoProps() {
+  /// etc...
+}
+```
 
-### Making a Progressive Web App
+<br />
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### 반응형
 
-### Advanced Configuration
+반응형 코드들이 온갖 컴포넌트에 산재해 있으면 안 된다. 반응형 코드들은 Layout 컴포넌트에만 있어야 한다.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+<br />
 
-### Deployment
+### CSS
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+px 단위는 사용하지 않는다. (em, rem 단위 권장)
+미디어 쿼리는 직접 작성하지 않고, styles/responsive 모듈의 displaySize() 함수를 사용한다.
+색상은 styles/colors 모듈의 colors 안의 상수를 활용한다.
 
-### `yarn build` fails to minify
+<br />
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Branch Strategy
+
+기능별로 각자 브랜치를 생성해 작업 후, 풀 리퀘스트를 생성해 메인에 머지한다.
+
+<br />
+<br />
+
+# 브랜치 전략
