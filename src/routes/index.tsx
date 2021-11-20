@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Header } from "../components/mainLayout/Header";
 import { CreatePage } from "../pages/Create";
 import { HomePage } from "../pages/Home";
 import { LoginPage } from "../pages/Login";
@@ -11,6 +12,7 @@ import { NeedAuth } from "../utils/login";
 export function AppRoutes() {
   return (
     <BrowserRouter>
+      <Header />
       <Routes>
         <Route
           path="/"
