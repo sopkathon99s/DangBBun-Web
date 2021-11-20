@@ -1,13 +1,30 @@
-import { ReactElement, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import { api } from "../services";
 import { useAuthToken, useAuthTokenSetter } from "../state/auth";
 import { useUserSetter } from "../state/user";
 
 export function NeedAuth(props: { children: ReactElement }): ReactElement {
+  const nagivate = useNavigate();
   const token = useAuthToken();
 
+  const [needLogin, setNeedLogin] = useState(false);
+
+  useEffect(() => {
+    if (needLogin) {
+      nagivate("/login", { replace: true });
+    }
+  }, [needLogin]);
+
   if (token === "") {
-    return <div>Loading</div>;
+    if (!needLogin) {
+      setNeedLogin(true);
+    }
+    return <div></div>;
+  } else {
+    if (needLogin) {
+      setNeedLogin(false);
+    }
   }
 
   return props.children;
