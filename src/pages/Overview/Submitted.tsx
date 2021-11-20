@@ -1,25 +1,38 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { theme } from "../../styles/theme";
+import { NormalBungaeCard } from "../../components/BungaeCard";
+import { Contacts } from "../../components/BungaeCard/Contacts";
+import { api } from "../../services";
+import { Bungae } from "../../services/types/bungaeService";
 
 export function SubmittedPage() {
+  const [bungaeList, setBungaeList] = useState<Bungae[]>([]);
+
+  useEffect(() => {
+    (async () => {
+      const list = await api.bungae.getBungaeList();
+      setBungaeList(list);
+    })();
+  }, []);
+
   return (
-    <div>
-      <SectionWrapper>
-        <LeftSection></LeftSection>
-        <RightSection></RightSection>
-      </SectionWrapper>
-    </div>
+    <StyledSubmittedPage>
+      {bungaeList.map((bungae) => (
+        <NormalBungaeCard
+          {...bungae}
+          key={bungae.id}
+          contactsComponent={
+            <Contacts
+              items={[
+                { name: "hello", contact: "world" },
+                { name: "hello", contact: "world" },
+              ]}
+            />
+          }
+        />
+      ))}
+    </StyledSubmittedPage>
   );
 }
 
-const SectionWrapper = styled.main`
-  display: flex;
-  width: 100%;
-  height: 100vh;
-`;
-
-const LeftSection = styled.section`
-  width: 1.8rem;
-  border-right: 1px solid ${theme.color.red};
-`;
-const RightSection = styled.section``;
+const StyledSubmittedPage = styled.div``;

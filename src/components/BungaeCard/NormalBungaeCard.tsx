@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import styled, { css } from "styled-components";
 import { theme } from "../../styles/theme";
 
@@ -19,11 +19,24 @@ interface NormalBungaeCardProps {
 
   applied: boolean;
   failed?: boolean;
+
+  contactsComponent?: ReactNode;
 }
 
 export function NormalBungaeCard(props: NormalBungaeCardProps) {
-  const { status, applied, hurryMessage, title, minMember, maxMember, currentMember, meetDate, location, description } =
-    props;
+  const {
+    status,
+    applied,
+    hurryMessage,
+    title,
+    minMember,
+    maxMember,
+    currentMember,
+    meetDate,
+    location,
+    description,
+    contactsComponent,
+  } = props;
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -42,6 +55,20 @@ export function NormalBungaeCard(props: NormalBungaeCardProps) {
       return <SuccessStatus>뻔개 성사!</SuccessStatus>;
     } else if (status.mode === "failed") {
       return <FailStatus>뻔개 실패</FailStatus>;
+    }
+  }
+
+  function switchSubmit() {
+    if (status.mode === "success") {
+      return <></>;
+    } else if (status.mode === "failed") {
+      return <></>;
+    }
+
+    if (applied) {
+      return <SubmitButton disabled>안 갈래요...</SubmitButton>;
+    } else {
+      return <SubmitButton>나도 데려가~</SubmitButton>;
     }
   }
 
@@ -71,10 +98,15 @@ export function NormalBungaeCard(props: NormalBungaeCardProps) {
         </PeopleCountBox>
         <SubmitAreaBox>
           <AppliedPeople current={currentMember} />
-          {applied ? <SubmitButton disabled>안 갈래요...</SubmitButton> : <SubmitButton>나도 데려가~</SubmitButton>}
+          {switchSubmit()}
         </SubmitAreaBox>
 
-        {isOpen && <Details>{description}</Details>}
+        {isOpen && (
+          <>
+            <Details>{description}</Details>
+            {contactsComponent}
+          </>
+        )}
       </BungaeCardInner>
       <ToggleButton onClick={handleToggle} isOpen={isOpen}>
         <DownArrow />
