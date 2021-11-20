@@ -1,13 +1,15 @@
 import { ReactElement, useState } from "react";
+import { useNavigate } from "react-router";
+
 import { api } from "../services";
-import { useAuthToken, useAuthTokenSetter } from "../state/auth";
+import { useAuthToken, useAuthTokenDestroyer, useAuthTokenSetter } from "../state/auth";
 import { useUserSetter } from "../state/user";
 
 export function NeedAuth(props: { children: ReactElement }): ReactElement {
   const token = useAuthToken();
 
   if (token === "") {
-    return <div>Loading</div>;
+    return <div></div>;
   }
 
   return props.children;
@@ -36,4 +38,16 @@ export function useLogin(onSuccess: () => void) {
   }
 
   return { request, isError };
+}
+
+export function useLogout() {
+  const navigate = useNavigate();
+  const destroy = useAuthTokenDestroyer();
+
+  function logout() {
+    destroy();
+    navigate("/login", { replace: true });
+  }
+
+  return { logout };
 }
