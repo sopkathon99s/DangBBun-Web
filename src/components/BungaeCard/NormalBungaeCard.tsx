@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 import { theme } from "../../styles/theme";
 
 import { ReactComponent as DownArrow } from "../../assets/downArrow.svg";
+import { AppliedPeople } from "./AppliedPeople";
 
 type BungaeStatus = { mode: "timeLeft"; message: string } | { mode: "failed" } | { mode: "success" };
 interface NormalBungaeCardProps {
@@ -69,7 +70,7 @@ export function NormalBungaeCard(props: NormalBungaeCardProps) {
           </TotalSubmitLabel>
         </PeopleCountBox>
         <SubmitAreaBox>
-          <div></div>
+          <AppliedPeople current={currentMember} />
           {applied ? <SubmitButton disabled>안 갈래요...</SubmitButton> : <SubmitButton>나도 데려가~</SubmitButton>}
         </SubmitAreaBox>
 
