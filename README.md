@@ -6,7 +6,10 @@
 
 - **서비스 소개**
 
-  번개를 당당하게 열고, 뻔뻔하게 참여하게 도와주는 서비스
+  웹 서비스 당뻔은, 공동체 내 구성원들의 네트워킹(번개) 솔루션입니다.<br/>
+  공동체 내 구성원들이 제대로 네트워킹을 하지 못하는 이유는 직접 나서 모임을 만들 용기가 없고 모임 진행 상황이 공동체 내에 원활히 공유되지 않으며 분산된 매체에서 네트워킹 정보가 돌아다니기 때문입니다.<br/>
+  따라서, 당뻔은 익명 네트워킹 방식을 이용해 모임 개설 실패에 대한 부담을 낮추고 실시간으로 네트워킹 준비 상황을 구성원들에게 전달하는 동시에 떠돌아 다니는 공동체의 네트워킹 정보를 한 곳으로 정리합니다.<br/>
+  우리의 모임을 더 당당하고, 뻔뻔하게 당뻔.
 
 <br />
 <br />
@@ -40,12 +43,43 @@
     <tr align="center">
         <td>
             쭈일<br/>
+            Create Page/Post 구현<br/>
+        </td>
+        <td>
+            커삐<br/>
+            초기세팅<br/>
+            Cards/Layout/Get 구현<br/>
+        </td>
+        <td>
+            쭈삼<br/>
+            Header/Nav/Loading 구현<br/>
+            README 작성<br/>
         </td>
     </tr>
 </table>
 
 <br />
 <br />
+
+# 기술스택 및 사용 라이브러리
+
+```json
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "axios": "^0.24.0",
+    "date-fns": "^2.26.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "6",
+    "react-scripts": "4.0.3",
+    "recoil": "^0.5.2",
+    "styled-reset": "^4.3.4",
+    "styled-components": "^5.3.3",
+    "web-vitals": "^1.0.1"
+  },
+```
 
 # 코드 컨벤션
 
