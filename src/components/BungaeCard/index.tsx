@@ -1,0 +1,1 @@
+export { NormalBungaeCard } from "./NormalBungaeCard";

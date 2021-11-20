@@ -1,25 +1,34 @@
 import styled from "styled-components";
-import { BungaeCard } from "../../components/BungaeCard";
+import { NormalBungaeCard } from "../../components/BungaeCard";
+import { MainListView } from "../../components/MainListView";
 
 export function TestTekiter() {
   return (
     <Outer>
-      <BungaeCard
-        restTime={15}
-        bungaeState="OPEN"
-        title="title"
-        currentCnt={123}
-        minCnt={2}
-        maxCnt={6}
-        date={new Date()}
-        location="loca"
-        detail="detal"
+      <MainListView
+        cards={[...new Array(10)].map((_, idx) => (
+          <NormalBungaeCard
+            key={idx}
+            status={{
+              mode: "timeLeft",
+              message: "hah",
+            }}
+            hurryMessage="아직도 망설여?"
+            title="title"
+            minMember={2}
+            maxMember={6}
+            currentMember={5}
+            meetDate="asdf"
+            location="loca"
+            description="detal"
+            applied={false}
+          />
+        ))}
       />
     </Outer>
   );
 }
 
 const Outer = styled.div`
-  width: 30rem;
-  height: 23rem;
+  padding-top: 4rem;
 `;
