@@ -14,4 +14,9 @@ export const GlobalStyle = createGlobalStyle`
         font-size: 62.5%;
         font-family: 'Noto Sans', 'Noto Sans KR', sans-serif;
     }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
 `;
